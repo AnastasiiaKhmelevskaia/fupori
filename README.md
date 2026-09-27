@@ -1,14 +1,13 @@
 # Fupori website
 
-- About Fupori: https://anastasiiakhmelevskaia.github.io/fupori-privacy/about.html
-- Privacy policy: https://anastasiiakhmelevskaia.github.io/fupori-privacy/
+- App website: https://anastasiiakhmelevskaia.github.io/fupori/
+- Privacy policy: https://anastasiiakhmelevskaia.github.io/fupori/privacy/
 
-These are static HTML pages. GitHub Pages publishes the `main` branch from the
-repository root, with no build tools or dependencies.
+GitHub Pages publishes static HTML from the `main` branch root. No build tools
+or dependencies are required.
 
-Edit `index.html` when Fupori's data practices change. Check that the published
-page and App Store Connect privacy answers match the current app. The contact
-link opens an email to the address listed in the policy.
+Edit `index.html` for the app page and `privacy/index.html` for the privacy policy.
+The former `fupori-privacy` repository redirects its public URLs to this site,
+so links already used in the app continue to work.
 
-Add the live URL to the app's Privacy Policy URL field in App Store Connect and
-link to it from the app's settings.
+Use the privacy URL above for future app releases and App Store Connect updates.
