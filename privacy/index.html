@@ -144,7 +144,7 @@
             <span class="eyebrow">Your data</span>
             <h1 id="page-title">Privacy,<br><span>in plain language.</span></h1>
             <p class="hero-copy">Fupori helps you keep track of habits. This policy explains what stays on your device, what can sync through iCloud, and what the app sends to analytics and diagnostics providers.</p>
-            <p class="updated">Last updated: September 25, 2026</p>
+            <p class="updated">Last updated: October 6, 2026</p>
           </div>
           <div class="hero-art" aria-hidden="true">
             <div class="art-backdrop"></div>
@@ -154,8 +154,8 @@
 
         <div class="summary" aria-label="Privacy summary">
           <article><span class="number">01 / HABITS</span><h2>Your habit data</h2><p>Stored on your device and synced to your private iCloud database when iCloud is available.</p></article>
-          <article><span class="number">02 / ANALYTICS</span><h2>App launches</h2><p>A third-party analytics service receives an app launch event to help us understand app use.</p></article>
-          <article><span class="number">03 / DIAGNOSTICS</span><h2>Errors and performance</h2><p>A third-party diagnostics service receives crash, error, log, and performance information to help us fix problems.</p></article>
+          <article><span class="number">02 / ANALYTICS</span><h2>App use</h2><p>A third-party analytics service receives limited app-use events and an anonymous installation identifier. Older builds also send IP-derived approximate location.</p></article>
+          <article><span class="number">03 / DIAGNOSTICS</span><h2>Errors and performance</h2><p>A third-party diagnostics service receives crash, error, and performance information to help us fix problems.</p></article>
         </div>
 
         <div class="body-layout">
@@ -182,9 +182,11 @@
               <span class="section-number">02</span>
               <h2>Services we use</h2>
               <h3>App analytics</h3>
-              <p>In the production app, a third-party analytics service receives an app launch event with the app environment. Its software may also add an identifier, event time, and app or device details. We use this to understand app launches. Fupori does not intentionally send habit names or completion history to this service. Automatic screen capture, control capture, and session replay are disabled.</p>
+              <p>In the production app, a third-party analytics service receives limited events for app launches, onboarding completion, habit creation and completion, viewed app sections, and selection of a companion type. These events use fixed action, section, and companion-type identifiers. They do not include habit names, custom companion names, your display name, or the contents of your habit history. We use them to understand which features people use and improve the app.</p>
+              <p>Analytics events include a randomly generated installation identifier that can associate events from the same installation, event time, app version and environment, and device details such as model and operating system. This identifier is not your Apple Account or advertising identifier. The service receives your IP address to handle network requests, and the project is configured to discard the raw IP address from stored analytics events. Older app builds allow the service to derive approximate location, such as city and country, from that address. The next app update will disable this location enrichment for analytics events. We do not request GPS location. Automatic screen and control capture and session replay are disabled.</p>
               <h3>Error and performance diagnostics</h3>
-              <p>A third-party diagnostics service receives error and crash reports, logs, performance traces, and profiling data so we can diagnose problems. Reports can include device and app details, an IP address, and information contained in error messages or logs. Diagnostic reports may contain personal information.</p>
+              <p>A third-party diagnostics service receives crash and error reports and sampled performance traces to help us diagnose problems. Reports can include an anonymous installation identifier, app and device details, stack traces, and automatic records of navigation and interactions before an error. The service may process an IP address and derive approximate location such as country or city. Fupori disables default personal-information collection and does not enable the service's separate log collection feature. Automatic diagnostic context can still contain information from errors or interface labels, so reports may contain personal information.</p>
+              <p>Installation identifiers can link usage or diagnostic records to the same installation even though we do not require an app account. We do not use this information for advertising, share it with data brokers, or combine it with data from other companies for advertising tracking.</p>
               <h3>Apple iCloud</h3>
               <p>CloudKit handles sync for the app's private iCloud data. You can use Fupori without an app account; iCloud sync depends on your device's Apple Account and iCloud settings.</p>
               <p>Our analytics and diagnostics providers process information for the purposes described above. You can read <a href="https://www.apple.com/legal/privacy/">Apple's privacy policy</a> for information about iCloud.</p>
