@@ -29,18 +29,20 @@
     <svg width="0" height="0" style="position:absolute" aria-hidden="true">
       <symbol id="glyph-check" viewBox="0 0 18 18"><path d="M3.5 9.5l3.5 3.5 7.5-8"/></symbol>
       <symbol id="glyph-chevron" viewBox="0 0 18 18"><path d="M6.5 3.5 12 9l-5.5 5.5"/></symbol>
-      <symbol id="glyph-down" viewBox="0 0 18 18"><path d="M9 3v12M4 10l5 5 5-5"/></symbol>
     </svg>
 
     <header class="site-header">
       <div class="shell">
         <div class="dock fp-raised">
           <a class="brand" href="./" aria-label="Fupori home"><img src="assets/app-icon-256.webp" alt="" width="256" height="256"><span>Fupori</span></a>
-          <nav aria-label="Site">
-            <a class="nav-optional" href="#companions">Companions</a>
-            <a class="nav-optional" href="#features">Features</a>
-            <a href="privacy/">Privacy</a>
-          </nav>
+          <div class="dock__end">
+            <nav aria-label="Site">
+              <a class="nav-optional" href="#companions">Companions</a>
+              <a class="nav-optional" href="#features">Features</a>
+              <a href="privacy/">Privacy</a>
+            </nav>
+            <a class="fp-raised fp-raised--accent fp-compact" href="https://testflight.apple.com/join/BM9y5Yra">Join the beta</a>
+          </div>
         </div>
       </div>
     </header>
@@ -53,7 +55,7 @@
             <h1 id="page-title">Build habits<br><em>with a little friend</em></h1>
             <p>Fupori is a habit tracker for iPhone. Every check-in helps your companion grow.</p>
             <div class="actions">
-              <a class="fp-raised fp-raised--accent fp-primary" href="#companions">Meet the companions <svg class="fp-glyph" aria-hidden="true"><use href="#glyph-down"/></svg></a>
+              <a class="fp-raised fp-raised--accent fp-primary" href="https://testflight.apple.com/join/BM9y5Yra">Join the beta on TestFlight</a>
               <!-- When the app is live, replace this paragraph with a link to the App Store listing. -->
               <p class="soon fp-outlined"><img src="assets/app-icon-256.webp" alt="" width="256" height="256"><span>Coming soon to the App Store<small>For iPhone, iOS 18 or later</small></span></p>
             </div>
@@ -221,7 +223,19 @@
               <h2 id="closing-title">Start with <em>something small</em></h2>
               <p class="lead">Choose one thing you can do for yourself. Your companion takes it from there.</p>
             </div>
-            <p class="soon fp-outlined"><img src="assets/app-icon-256.webp" alt="" width="256" height="256" loading="lazy"><span>Coming soon to the App Store<small>For iPhone, iOS 18 or later</small></span></p>
+            <div class="closing__actions">
+              <a class="fp-raised fp-raised--accent fp-primary" href="https://testflight.apple.com/join/BM9y5Yra">Join the beta on TestFlight</a>
+              <p class="soon fp-outlined"><img src="assets/app-icon-256.webp" alt="" width="256" height="256" loading="lazy"><span>Coming soon to the App Store<small>For iPhone, iOS 18 or later</small></span></p>
+            </div>
+          </div>
+          <div class="follow" data-reveal>
+            <h3 id="follow-title">Follow along for launch news</h3>
+            <ul aria-labelledby="follow-title">
+              <li><a class="fp-chip fp-raised" href="https://www.instagram.com/fuporiapp/" target="_blank" rel="noopener">Instagram <small>@fuporiapp</small></a></li>
+              <li><a class="fp-chip fp-raised" href="https://www.threads.com/@fuporiapp" target="_blank" rel="noopener">Threads <small>@fuporiapp</small></a></li>
+              <li><a class="fp-chip fp-raised" href="https://www.tiktok.com/@fupori" target="_blank" rel="noopener">TikTok <small>@fupori</small></a></li>
+              <li><a class="fp-chip fp-raised" href="https://x.com/fupori" target="_blank" rel="noopener">X <small>@fupori</small></a></li>
+            </ul>
           </div>
         </div>
       </section>

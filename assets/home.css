@@ -118,13 +118,17 @@ html:not(.js) .needs-js { display: none; }
 .closing { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: clamp(16px, 3vw, 32px); margin-top: clamp(36px, 5vw, 56px); padding: clamp(20px, 3vw, 32px); border-radius: var(--radius-extraLarge); background: var(--TintMeadow); }
 .closing > img { width: clamp(72px, 9vw, 104px); animation: hover 6s ease-in-out infinite; }
 .closing .lead { margin-top: 6px; }
+.closing__actions { display: grid; justify-items: start; gap: 10px; }
+.follow { margin-top: clamp(28px, 4vw, 40px); text-align: center; }
+.follow h3 { color: var(--TextSecondary); font-family: var(--font-sans); font-size: 13px; line-height: 18px; font-weight: 600; }
+.follow ul { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--spacing-extraSmall); margin-top: 10px; }
 
 @media (max-width: 900px) {
   .play { grid-template-columns: 1fr; }
   .play__stage { max-width: 360px; width: 100%; margin-inline: auto; }
   .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .closing { grid-template-columns: auto minmax(0, 1fr); }
-  .closing .soon { grid-column: 2; justify-self: start; }
+  .closing__actions { grid-column: 2; }
 }
 
 @media (max-width: 720px) {
@@ -144,6 +148,6 @@ html:not(.js) .needs-js { display: none; }
   .kinds { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .facts { grid-template-columns: 1fr; gap: var(--spacing-medium); }
   .closing { grid-template-columns: 1fr; justify-items: start; }
-  .closing .soon { grid-column: 1; }
+  .closing__actions { grid-column: 1; }
   .closing > img { width: 64px; }
 }

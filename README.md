@@ -27,6 +27,11 @@ or dependencies are required. To preview, open `index.html` in a browser.
 the closing section (search for `class="soon`). Replace both with a link to the
 App Store listing.
 
+Until then the "Join the beta" buttons on both pages point at the public
+TestFlight link (search for `testflight.apple.com`). Remove or repoint them
+when the beta closes. The social links are in the "Follow along" row at the
+end of `index.html`.
+
 The former `fupori-privacy` repository redirects its public URLs to this site,
 so links already used in the app continue to work.
 
