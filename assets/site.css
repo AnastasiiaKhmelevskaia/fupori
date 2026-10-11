@@ -72,6 +72,15 @@
 
 @media (pointer: coarse) { :root { --size-control: 44px; } }
 
+/* Large desktop monitors: scale the whole page up in steps, so it keeps the
+   proportions of a laptop view and does not sit small in the middle. */
+:root { --page-zoom: 1; }
+@media (min-width: 1700px) { :root { --page-zoom: 1.15; } }
+@media (min-width: 2000px) { :root { --page-zoom: 1.3; } }
+@media (min-width: 2400px) { :root { --page-zoom: 1.5; } }
+@media (min-width: 2900px) { :root { --page-zoom: 1.75; } }
+@media (min-width: 3400px) { :root { --page-zoom: 2; } }
+
 @media (prefers-color-scheme: dark) {
   :root {
     --AppBackground: #211e1b;
@@ -98,8 +107,8 @@
 
 /* Base */
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 28px); -webkit-text-size-adjust: 100%; }
-body { margin: 0; background: var(--AppBackground); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+html { scroll-behavior: smooth; scroll-padding-top: calc((var(--header-h) + 28px) * var(--page-zoom)); -webkit-text-size-adjust: 100%; }
+body { margin: 0; zoom: var(--page-zoom); background: var(--AppBackground); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: clip; }
 img, svg { display: block; max-width: 100%; }
 img { height: auto; }
 h1, h2, h3, h4, p, figure, ul, ol, fieldset, legend { margin: 0; padding: 0; }
