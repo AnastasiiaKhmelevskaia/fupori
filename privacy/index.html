@@ -8,159 +8,89 @@
     <link rel="icon" type="image/png" href="../assets/app-icon.png">
     <link rel="canonical" href="https://anastasiiakhmelevskaia.github.io/fupori/privacy/">
     <title>Privacy policy · Fupori</title>
+    <link rel="stylesheet" href="../assets/site.css">
     <style>
-      :root {
-        color-scheme: light dark;
-        font-family: ui-rounded, "SF Pro Rounded", -apple-system, BlinkMacSystemFont, sans-serif;
-        color: var(--text);
-        background: var(--background);
-        font-synthesis: none;
-        --background: #f8f3ea;
-        --surface: #fff8f0;
-        --text: #2f2b28;
-        --muted: #6d675f;
-        --border: #d8d3cf;
-        --accent: #f28c28;
-        --accent-border: #c96b18;
-        --green: #5d8a63;
-        --green-border: #3f6847;
-        --link: #3f6847;
-        --link-hover: #c96b18;
-        --yellow: #f6c445;
-        --chip: #fff0d7;
-        --habit-card: #fff0c8;
-        --analytics-card: #e6eee1;
-        --diagnostics-card: #fbe6e2;
-        --art-backdrop: #dce9bb;
-      }
+      :root { --TintAnalytics: color-mix(in srgb, var(--BrandSecondary) 14%, var(--SurfacePrimary)); --TintDiagnostics: color-mix(in srgb, var(--StatusError) 14%, var(--SurfacePrimary)); --TintHabits: color-mix(in srgb, var(--BrandPrimary) 24%, var(--SurfacePrimary)); }
+      .hero { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(260px, .85fr); align-items: center; gap: var(--spacing-large); margin-block: 28px 20px; padding: clamp(24px, 4vw, 40px); border-radius: var(--radius-extraLarge); overflow: hidden; }
+      .eyebrow { display: inline-block; padding: 8px 14px; border: var(--border-surface) solid color-mix(in srgb, var(--AccentColor) 35%, transparent); border-radius: var(--radius-capsule); background: var(--TintPeach); color: var(--HighlightText); font-size: 12px; line-height: 16px; font-weight: 700; }
+      h1 { margin: 14px 0; font-size: clamp(1.9rem, 1.4rem + 1.8vw, 2.75rem); }
+      .hero-copy { max-width: 460px; }
+      .updated { margin-top: 18px; color: var(--TextSecondary); font-size: 13px; }
+      .hero-art { position: relative; display: grid; place-items: center; width: min(100%, 220px); aspect-ratio: 1; margin-inline: auto; isolation: isolate; }
+      .hero-art::before { content: ""; position: absolute; inset: 6%; z-index: -1; border-radius: 50%; background: var(--TintMeadow); border: var(--border-surface) solid color-mix(in srgb, var(--BrandSecondary) 35%, transparent); }
+      .hero-art img { width: 104%; max-width: none; rotate: -8deg; }
 
-      * { box-sizing: border-box; }
-      html { scroll-behavior: smooth; }
-      body { margin: 0; background: var(--background); }
-      a { color: var(--link); text-underline-offset: 0.2em; }
-      a:hover { color: var(--link-hover); }
-      a:focus-visible { outline: 3px solid var(--accent-border); outline-offset: 4px; border-radius: 5px; }
-      .shell { width: min(100% - 40px, 1100px); margin-inline: auto; }
+      .summary { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--spacing-medium); }
+      .summary article { padding: var(--spacing-medium) var(--spacing-large); font-size: 14px; border-radius: var(--radius-extraLarge); }
+      .summary article:nth-child(1) { background: var(--TintHabits); }
+      .summary article:nth-child(2) { background: var(--TintAnalytics); }
+      .summary article:nth-child(3) { background: var(--TintDiagnostics); }
+      .summary .number { display: block; margin-bottom: var(--spacing-small); }
+      .summary h2 { margin-bottom: 4px; font-size: 16px; line-height: 22px; font-weight: 700; letter-spacing: -.01em; }
 
-      .site-header { border-bottom: 2px solid var(--border); }
-      .site-header .shell { min-height: 86px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-      .brand { display: inline-flex; align-items: center; gap: 12px; color: var(--text); text-decoration: none; }
-      .brand-mark { display: grid; place-items: center; width: 48px; height: 48px; border: 2px solid var(--green-border); border-radius: 15px; background: #d9f6bc; overflow: hidden; }
-      .brand-mark img { width: 100%; height: 100%; object-fit: contain; }
-      .brand-name { font-size: 1.32rem; font-weight: 800; letter-spacing: -0.045em; }
-      .header-nav { display: flex; align-items: center; gap: 8px; }
-      .header-nav a { padding: 8px 13px; border: 2px solid transparent; border-radius: 999px; color: var(--muted); font-size: 0.87rem; font-weight: 650; text-decoration: none; }
-      .header-nav a:hover { color: var(--text); background: var(--surface); }
-      .header-nav a[aria-current="page"] { border-color: var(--border); background: var(--surface); color: var(--text); }
-
-      .hero { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr); align-items: center; gap: 20px; min-height: 510px; margin-block: 40px 28px; padding: 48px 54px; border: 2px solid var(--border); border-radius: 32px; background: var(--surface); box-shadow: 0 5px 0 var(--border); overflow: hidden; }
-      .hero-content { position: relative; z-index: 1; }
-      .eyebrow { display: inline-block; padding: 9px 14px; border: 2px solid var(--accent-border); border-radius: 999px; color: var(--accent-border); background: var(--chip); font-size: 0.76rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
-      h1, h2, h3, p { margin-top: 0; }
-      h1 { max-width: 660px; margin: 22px 0; font-size: clamp(3.3rem, 5.6vw, 5.4rem); line-height: 1.02; letter-spacing: -0.065em; }
-      h1 span { color: var(--accent-border); }
-      .hero-copy { max-width: 550px; margin-bottom: 0; color: var(--muted); font-size: clamp(1.08rem, 1.8vw, 1.26rem); line-height: 1.6; }
-      .updated { margin: 28px 0 0; color: var(--muted); font-size: 0.9rem; }
-      .hero-art { position: relative; display: grid; place-items: center; width: min(100%, 410px); aspect-ratio: 1; margin-inline: auto; isolation: isolate; }
-      .art-backdrop { position: absolute; inset: 6%; z-index: -1; border: 2px solid var(--green-border); border-radius: 47% 53% 50% 44%; background: var(--art-backdrop); box-shadow: 0 6px 0 var(--green-border); transform: rotate(-8deg); }
-      .hero-art img { display: block; width: 108%; height: auto; transform: rotate(-8deg); filter: drop-shadow(0 14px 8px #57392320); }
-      .hero-art::before, .hero-art::after { content: ""; position: absolute; z-index: -1; border-radius: 50%; }
-      .hero-art::before { width: 58px; height: 58px; top: 0; right: 6%; background: var(--yellow); }
-      .hero-art::after { width: 24px; height: 24px; left: 1%; bottom: 17%; background: var(--accent); }
-
-      .summary { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-      .summary article { min-height: 206px; padding: 26px; border: 2px solid var(--border); border-radius: 24px; box-shadow: 0 4px 0 var(--border); }
-      .summary article:nth-child(1) { background: var(--habit-card); }
-      .summary article:nth-child(2) { background: var(--analytics-card); }
-      .summary article:nth-child(3) { background: var(--diagnostics-card); }
-      .summary .number { display: block; margin-bottom: 23px; color: var(--accent-border); font-size: 0.78rem; font-weight: 800; letter-spacing: 0.04em; }
-      .summary h2 { margin-bottom: 9px; font-size: 1.23rem; letter-spacing: -0.025em; }
-      .summary p { margin-bottom: 0; color: var(--text); line-height: 1.55; }
-
-      .body-layout { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: clamp(30px, 6vw, 80px); padding-block: 90px 105px; }
-      .contents { align-self: start; position: sticky; top: 28px; }
-      .contents p { margin: 0 0 18px 12px; color: var(--muted); font-size: 0.77rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
-      .contents a { display: block; padding: 10px 12px; border-radius: 12px; color: var(--muted); font-size: 0.95rem; text-decoration: none; }
-      .contents a:hover { color: var(--text); background: var(--surface); }
-      .policy-section { margin-bottom: 24px; padding: 34px 40px 39px; border: 2px solid var(--border); border-radius: 24px; background: var(--surface); box-shadow: 0 4px 0 var(--border); scroll-margin-top: 28px; }
+      .body-layout { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: clamp(30px, 6vw, 80px); padding-block: clamp(44px, 6vw, 64px) clamp(52px, 7vw, 80px); }
+      .contents { align-self: start; position: sticky; top: calc(var(--header-h) + 36px); }
+      .contents p { margin: 0 0 var(--spacing-small) var(--spacing-small); }
+      .contents a { display: flex; align-items: center; min-height: var(--size-control); padding: 0 var(--spacing-small); border-radius: var(--radius-extraSmall); color: var(--TextSecondary); font-size: 14px; font-weight: 600; text-decoration: none; }
+      .contents a:hover { color: var(--TextPrimary); background: var(--NavigationSelectionBackground); }
+      .policy-section { margin-bottom: var(--spacing-large); padding: clamp(20px, 3vw, 32px); border-radius: var(--radius-extraLarge); scroll-margin-top: calc(var(--header-h) + 36px); }
       .policy-section:last-child { margin-bottom: 0; }
-      .section-number { display: grid; place-items: center; width: 40px; height: 40px; margin-bottom: 20px; border: 2px solid var(--accent-border); border-radius: 13px; color: var(--accent-border); background: var(--chip); font-size: 0.8rem; font-weight: 800; }
-      h2 { margin-bottom: 20px; font-size: clamp(1.75rem, 3.4vw, 2.35rem); line-height: 1.15; letter-spacing: -0.045em; }
-      h3 { margin: 30px 0 9px; font-size: 1.1rem; letter-spacing: -0.02em; }
-      .policy-section p, .policy-section li { color: var(--muted); font-size: 1.03rem; line-height: 1.73; }
+      .section-number { display: grid; place-items: center; width: 34px; height: 34px; margin-bottom: var(--spacing-medium); border-radius: var(--radius-extraSmall); background: var(--TintPeach); border: var(--border-surface) solid color-mix(in srgb, var(--AccentColor) 35%, transparent); color: var(--HighlightText); font-size: 13px; font-weight: 700; }
+      .policy-section h2 { margin-bottom: var(--spacing-medium); font-size: clamp(1.4rem, 1.2rem + .8vw, 1.75rem); line-height: 1.15; }
+      .policy-section h3 { margin: 22px 0 6px; font-size: 16px; }
+      .policy-section p, .policy-section li { color: var(--TextSecondary); font-size: 15px; line-height: 1.7; }
+      .policy-section p, .policy-section ul { margin-bottom: 14px; }
       .policy-section p:last-child { margin-bottom: 0; }
-      .policy-section p, .policy-section ul { margin-bottom: 18px; }
-      .policy-section ul { padding-left: 1.3em; }
-      .policy-section li + li { margin-top: 7px; }
-      .contact-link { display: inline-flex; align-items: center; gap: 9px; min-height: 50px; margin: 8px 0 22px; padding: 12px 18px; border: 2px solid var(--accent-border); border-radius: 16px; background: var(--accent); box-shadow: 0 4px 0 var(--accent-border); color: #fff; font-weight: 750; text-decoration: none; }
-      .contact-link:hover { color: #fff; background: var(--accent-border); box-shadow: 0 2px 0 var(--accent-border); transform: translateY(2px); }
-      .site-footer { padding-block: 29px 40px; border-top: 2px solid var(--border); color: var(--muted); font-size: 0.9rem; }
-      .site-footer .shell { display: flex; justify-content: space-between; gap: 20px; }
+      .contact-link { margin: 8px 0 22px; overflow-wrap: anywhere; }
 
-      @media (prefers-color-scheme: dark) {
-        :root { --background: #211e1b; --surface: #2f2b28; --text: #fff8f0; --muted: #c9c1b7; --border: #545454; --accent: #f29a44; --accent-border: #b85c16; --green: #7aa181; --green-border: #456a4c; --link: #b8ddb6; --link-hover: #f29a44; --chip: #473024; --habit-card: #403625; --analytics-card: #303e31; --diagnostics-card: #483434; --art-backdrop: #4a5f40; }
-        h1 span, .eyebrow, .section-number, .summary .number { color: var(--accent); }
-        .brand-mark { background: #577650; }
-      }
       @media (max-width: 850px) {
-        .hero { grid-template-columns: 1fr; min-height: 0; padding: 40px; }
-        .hero-art { max-width: 330px; }
+        .hero { grid-template-columns: 1fr; }
+        .hero-art { max-width: 200px; }
         .summary { grid-template-columns: 1fr; }
-        .summary article { min-height: 0; }
-        .summary .number { margin-bottom: 12px; }
-        .body-layout { display: block; padding-block: 70px 80px; }
-        .contents { position: static; margin-bottom: 34px; }
-        .contents p { margin-left: 0; }
-        .contents a { display: inline-block; margin: 0 5px 5px 0; padding: 8px 10px; background: var(--surface); }
+        .body-layout { display: block; }
+        .contents { position: static; display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: var(--spacing-huge); }
+        .contents p { flex-basis: 100%; margin-left: 0; }
+        .contents a { background: var(--SurfacePrimary); border: var(--border-surface) solid var(--SurfaceBorder); border-radius: var(--radius-capsule); padding-inline: var(--spacing-medium); box-shadow: var(--raised-surface); margin-bottom: var(--edge-lowerDepth); }
       }
-      @media (max-width: 500px) {
-        .shell { width: min(100% - 24px, 1100px); }
-        .site-header .shell { min-height: 73px; }
-        .brand-mark { width: 42px; height: 42px; }
-        .hero { margin-top: 22px; padding: 28px 22px; border-radius: 26px; }
-        h1 { font-size: clamp(2.65rem, 11vw, 3.4rem); }
-        .hero-art { max-width: 260px; }
-        .summary article { padding: 24px; }
-        .policy-section { padding: 25px 23px 30px; }
-        .site-footer .shell { display: block; }
-        .site-footer span { display: block; }
-        .site-footer span + span { margin-top: 8px; }
-      }
-      @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .contact-link:hover { transform: none; } }
     </style>
   </head>
   <body>
+    <a class="skip-link" href="#top">Skip to content</a>
     <header class="site-header">
       <div class="shell">
-        <a class="brand" href="../" aria-label="Fupori, about the app"><span class="brand-mark"><img src="../assets/app-icon.png" alt="" width="1024" height="1024"></span><span class="brand-name">fupori</span></a>
-        <nav class="header-nav" aria-label="Site navigation"><a href="../">About</a><a href="./" aria-current="page">Privacy</a></nav>
+        <div class="dock fp-raised">
+          <a class="brand" href="../" aria-label="Fupori home"><img src="../assets/app-icon-256.webp" alt="" width="256" height="256"><span>Fupori</span></a>
+          <nav aria-label="Site">
+            <a href="../">About</a>
+            <a href="./" aria-current="page">Privacy</a>
+          </nav>
+        </div>
       </div>
     </header>
 
     <main id="top">
       <div class="shell">
-        <section class="hero" aria-labelledby="page-title">
+        <section class="hero fp-outlined" aria-labelledby="page-title">
           <div class="hero-content">
             <span class="eyebrow">Your data</span>
-            <h1 id="page-title">Privacy,<br><span>in plain language.</span></h1>
-            <p class="hero-copy">Fupori helps you keep track of habits. This policy explains what stays on your device, what can sync through iCloud, and what the app sends to analytics and diagnostics providers.</p>
+            <h1 id="page-title">Privacy,<br><em>in plain language</em></h1>
+            <p class="hero-copy lead">Fupori helps you keep track of habits. This policy explains what stays on your device, what can sync through iCloud, and what the app sends to analytics and diagnostics providers.</p>
             <p class="updated">Last updated: October 6, 2026</p>
           </div>
           <div class="hero-art" aria-hidden="true">
-            <div class="art-backdrop"></div>
             <img src="../assets/bee-peeking.png" alt="" width="1024" height="1024">
           </div>
         </section>
 
         <div class="summary" aria-label="Privacy summary">
-          <article><span class="number">01 / HABITS</span><h2>Your habit data</h2><p>Stored on your device and synced to your private iCloud database when iCloud is available.</p></article>
-          <article><span class="number">02 / ANALYTICS</span><h2>App use</h2><p>A third-party analytics service receives limited app-use events and an anonymous installation identifier. Older builds also send IP-derived approximate location.</p></article>
-          <article><span class="number">03 / DIAGNOSTICS</span><h2>Errors and performance</h2><p>A third-party diagnostics service receives crash, error, and performance information to help us fix problems.</p></article>
+          <article class="fp-outlined"><span class="number caption-bold">01 / HABITS</span><h2>Your habit data</h2><p>Stored on your device and synced to your private iCloud database when iCloud is available.</p></article>
+          <article class="fp-outlined"><span class="number caption-bold">02 / ANALYTICS</span><h2>App use</h2><p>A third-party analytics service receives limited app-use events and an anonymous installation identifier. Older builds also send IP-derived approximate location.</p></article>
+          <article class="fp-outlined"><span class="number caption-bold">03 / DIAGNOSTICS</span><h2>Errors and performance</h2><p>A third-party diagnostics service receives crash, error, and performance information to help us fix problems.</p></article>
         </div>
 
         <div class="body-layout">
           <nav class="contents" aria-label="On this page">
-            <p>On this page</p>
+            <p class="caption-bold">On this page</p>
             <a href="#data">Data in Fupori</a>
             <a href="#providers">Services we use</a>
             <a href="#choices">Your choices</a>
@@ -170,7 +100,7 @@
           </nav>
 
           <div class="policy-content">
-            <section class="policy-section" id="data">
+            <section class="policy-section fp-outlined" id="data">
               <span class="section-number">01</span>
               <h2>Data in Fupori</h2>
               <p>Fupori stores the information you enter or create while using the app, including habit names and schedules, reminders, completion history, companion progress, achievements, and care rewards. It also saves app preferences such as your display name, theme, notification choice, and first-use date.</p>
@@ -178,7 +108,7 @@
               <p>The app's widget reads a small snapshot shared locally between the app and its widget. Habit reminders are scheduled as notifications on your device.</p>
             </section>
 
-            <section class="policy-section" id="providers">
+            <section class="policy-section fp-outlined" id="providers">
               <span class="section-number">02</span>
               <h2>Services we use</h2>
               <h3>App analytics</h3>
@@ -192,31 +122,31 @@
               <p>Our analytics and diagnostics providers process information for the purposes described above. You can read <a href="https://www.apple.com/legal/privacy/">Apple's privacy policy</a> for information about iCloud.</p>
             </section>
 
-            <section class="policy-section" id="choices">
+            <section class="policy-section fp-outlined" id="choices">
               <span class="section-number">03</span>
               <h2>Your choices</h2>
               <p>You can edit or delete habits in Fupori. You can turn off habit reminders in the app or change notification permission in iOS Settings. You can manage Fupori's iCloud access in your device's iCloud settings.</p>
               <p>The current app has no in-app switch for analytics or diagnostics. To stop new data from being sent by the app, stop using it or remove it from your device. If you have a privacy request about data already sent, use the contact link below.</p>
             </section>
 
-            <section class="policy-section" id="retention">
+            <section class="policy-section fp-outlined" id="retention">
               <span class="section-number">04</span>
               <h2>Retention and deletion</h2>
               <p>Removing Fupori deletes its local app data from that device. If you used iCloud sync, copies can remain in your private iCloud storage and on your other devices. You can manage that storage through your Apple Account's iCloud settings.</p>
               <p>Our analytics and diagnostics providers keep information according to their service settings and applicable retention policies. Contact us to ask about access to or deletion of information held through those services. We may need enough information to find the relevant records, and some requests may be limited by what can be identified or by legal requirements.</p>
             </section>
 
-            <section class="policy-section" id="website">
+            <section class="policy-section fp-outlined" id="website">
               <span class="section-number">05</span>
               <h2>This website</h2>
               <p>This page is a static website. It does not load advertising or analytics scripts and does not set cookies. GitHub Pages hosts the page; GitHub may log visitors' IP addresses for security. See <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub's privacy statement</a>.</p>
             </section>
 
-            <section class="policy-section" id="contact">
+            <section class="policy-section fp-outlined" id="contact">
               <span class="section-number">06</span>
               <h2>Contact and updates</h2>
               <p>For a privacy question, access request, or deletion request, email us at the address below.</p>
-              <a class="contact-link" href="mailto:anastasiakhmelevskaia@gmail.com">anastasiakhmelevskaia@gmail.com <span aria-hidden="true">↗</span></a>
+              <a class="contact-link fp-raised fp-raised--accent fp-compact" href="mailto:anastasiakhmelevskaia@gmail.com">anastasiakhmelevskaia@gmail.com</a>
               <p>We may update this policy when the app or its data practices change. The date at the top shows when this page was last revised.</p>
             </section>
           </div>
@@ -224,6 +154,14 @@
       </div>
     </main>
 
-    <footer class="site-footer"><div class="shell"><span>© 2026 Fupori</span><span><a href="../">About Fupori</a></span></div></footer>
+    <footer class="site-footer">
+      <div class="shell">
+        <span>© 2026 Fupori. Build habits with a little friend.</span>
+        <ul>
+          <li><a href="../">About Fupori</a></li>
+          <li><a href="#top">Back to top</a></li>
+        </ul>
+      </div>
+    </footer>
   </body>
 </html>

@@ -1,0 +1,213 @@
+/* Fupori website.
+   Tokens, names and rules come from the Fupori design system (extracted from the
+   SwiftUI app). The rule that holds the look together: a raised surface is
+   something you can press; an outlined surface is something you read.
+   No blurred shadows anywhere. */
+
+:root {
+  color-scheme: light dark;
+
+  /* Color (asset-catalog names) */
+  --AppBackground: #f8f3ea;
+  --SurfacePrimary: #fff8f0;
+  --SurfaceBorder: #d8d3cf;
+  --NavigationSelectionBackground: #e7e3dc80;
+  --TextPrimary: #2f2b28;
+  --TextSecondary: #6d675f;
+  --AccentColor: #f28c28;
+  --AccentBorder: #c96b18;
+  --BrandPrimary: #f6c445;
+  --BrandSecondary: #5d8a63;
+  --BrandSecondaryBorder: #3f6847;
+  --StatusError: #e56b6f;
+  --CategoryMedicine: #398ba5;
+
+  /* Type */
+  --font-rounded: ui-rounded, "SF Pro Rounded", system-ui, -apple-system, sans-serif;
+  --font-sans: system-ui, -apple-system, "SF Pro Text", "SF Pro", sans-serif;
+
+  /* AppSpacing */
+  --spacing-extraSmall: 8px;
+  --spacing-small: 12px;
+  --spacing-medium: 16px;
+  --spacing-large: 20px;
+  --spacing-extraLarge: 24px;
+  --spacing-huge: 32px;
+
+  /* AppRadius */
+  --radius-extraSmall: 12px;
+  --radius-small: 14px;
+  --radius-medium: 18px;
+  --radius-large: 20px;
+  --radius-extraLarge: 24px;
+  --radius-tabBar: 26px;
+  --radius-capsule: 9999px;
+
+  /* SurfaceMetrics. The app's lower edge is 4pt; web controls are smaller, so 3px. */
+  --border-surface: 2px;
+  --edge-lowerDepth: 3px;
+  --size-control: 38px;
+  --raised-surface: 0 var(--edge-lowerDepth) 0 var(--SurfaceBorder);
+  --raised-accent: 0 var(--edge-lowerDepth) 0 var(--AccentBorder);
+  --opacity-pressed: .85;
+
+  /* Web only. AccentColor and white TextOnAccent fall below 3:1 on paper, so
+     display highlights use AccentBorder, small highlighted text uses a deeper
+     orange, and accent fills carry dark ink. */
+  --Ink: #2f2b28;
+  --Highlight: var(--AccentBorder);
+  --HighlightText: #a4520e;
+  --Link: var(--BrandSecondaryBorder);
+  --Bezel: #2f2b28;
+  --TintMeadow: color-mix(in srgb, #a9c56b 24%, var(--AppBackground));
+  --TintSun: color-mix(in srgb, var(--BrandPrimary) 20%, var(--AppBackground));
+  --TintPeach: color-mix(in srgb, var(--AccentColor) 10%, var(--AppBackground));
+  --header-h: 52px;
+
+  font-family: var(--font-sans);
+  font-synthesis: none;
+  background: var(--AppBackground);
+  color: var(--TextPrimary);
+}
+
+@media (pointer: coarse) { :root { --size-control: 44px; } }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --AppBackground: #211e1b;
+    --SurfacePrimary: #2f2b28;
+    --SurfaceBorder: #545454;
+    --NavigationSelectionBackground: #45403c;
+    --TextPrimary: #fff8f0;
+    --TextSecondary: #c9c1b7;
+    --AccentColor: #f29a44;
+    --AccentBorder: #b85c16;
+    --BrandSecondary: #7aa181;
+    --BrandSecondaryBorder: #456a4c;
+    --StatusError: #f07f82;
+    --CategoryMedicine: #65b4d0;
+    --Highlight: var(--AccentColor);
+    --HighlightText: var(--AccentColor);
+    --Link: #b8ddb6;
+    --Bezel: #151311;
+    --TintMeadow: color-mix(in srgb, #a9c56b 13%, var(--AppBackground));
+    --TintSun: color-mix(in srgb, var(--BrandPrimary) 12%, var(--AppBackground));
+    --TintPeach: color-mix(in srgb, var(--AccentColor) 12%, var(--AppBackground));
+  }
+}
+
+/* Base */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 28px); -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--AppBackground); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+img, svg { display: block; max-width: 100%; }
+img { height: auto; }
+h1, h2, h3, h4, p, figure, ul, ol, fieldset, legend { margin: 0; padding: 0; }
+fieldset { border: 0; min-width: 0; }
+ul, ol { list-style: none; }
+button, input { font: inherit; color: inherit; }
+button { -webkit-appearance: none; appearance: none; }
+[hidden] { display: none !important; }
+a { color: var(--Link); text-underline-offset: .2em; }
+a:hover { color: var(--Highlight); }
+:focus-visible { outline: 3px solid var(--Highlight); outline-offset: 3px; border-radius: 6px; }
+
+.shell { width: min(100% - 40px, 960px); margin-inline: auto; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.skip-link { position: absolute; top: -100px; left: 16px; z-index: 50; padding: 8px 14px; border-radius: var(--radius-capsule); background: var(--SurfacePrimary); border: var(--border-surface) solid var(--SurfaceBorder); color: var(--TextPrimary); font-weight: 600; }
+.skip-link:focus { top: 12px; }
+
+/* Type: rounded is the brand voice, SF Pro carries the interface. */
+.display, h1, h2, h3 { font-family: var(--font-rounded); text-wrap: balance; }
+h1 { font-size: clamp(2rem, 1.4rem + 2.2vw, 3rem); line-height: 1.06; font-weight: 800; letter-spacing: -.025em; }
+h2 { font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem); line-height: 1.12; font-weight: 800; letter-spacing: -.02em; }
+h3 { font-size: 16px; line-height: 22px; font-weight: 700; }
+h1 em, h2 em { font-style: normal; color: var(--Highlight); }
+.lead { color: var(--TextSecondary); font-size: clamp(.975rem, .93rem + .2vw, 1.0625rem); line-height: 1.55; text-wrap: pretty; }
+.caption-bold { font-size: 12px; line-height: 16px; font-weight: 700; color: var(--TextSecondary); }
+.footnote { font-size: 12px; line-height: 17px; color: var(--TextSecondary); }
+.tnum { font-variant-numeric: tabular-nums; }
+
+/* Raised surface: fill, 2pt stroke, solid lower edge. */
+.fp-raised {
+  background: var(--SurfacePrimary);
+  border: var(--border-surface) solid var(--SurfaceBorder);
+  box-shadow: var(--raised-surface);
+  margin-bottom: var(--edge-lowerDepth);
+  border-radius: var(--radius-medium);
+  color: var(--TextPrimary);
+}
+.fp-raised--accent { background: var(--AccentColor); border-color: var(--AccentBorder); box-shadow: var(--raised-accent); color: var(--Ink); }
+a.fp-raised, button.fp-raised, label.fp-raised { cursor: pointer; text-decoration: none; transition: opacity .12s ease-out, transform .12s ease-out, background-color .22s, border-color .22s, box-shadow .22s; -webkit-tap-highlight-color: transparent; }
+a.fp-raised:hover { color: var(--TextPrimary); }
+a.fp-raised--accent:hover { color: var(--Ink); }
+a.fp-raised:active, button.fp-raised:active, label.fp-raised:active { opacity: var(--opacity-pressed); transform: scale(.98); }
+
+/* Outlined surface: same fill and stroke, no lower edge. */
+.fp-outlined { background: var(--SurfacePrimary); border: var(--border-surface) solid var(--SurfaceBorder); border-radius: var(--radius-medium); }
+
+/* AppPrimaryButtonStyle and AppCompactButtonStyle */
+.fp-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 9px 20px; border-radius: var(--radius-capsule); font-size: 15px; line-height: 20px; font-weight: 600; }
+.fp-compact { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: var(--size-control); padding: 6px 14px; border-radius: var(--radius-capsule); font-size: 14px; line-height: 19px; font-weight: 600; }
+.fp-glyph { width: 15px; height: 15px; flex: none; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+
+/* HabitFilterChip and OnboardingChip */
+.fp-chip { display: inline-flex; align-items: center; gap: 6px; min-height: var(--size-control); padding: 0 14px; border-radius: var(--radius-capsule); font-size: 14px; line-height: 19px; font-weight: 600; white-space: nowrap; }
+.fp-chip:has(input:checked) { background: var(--AccentColor); border-color: var(--AccentBorder); box-shadow: var(--raised-accent); color: var(--Ink); }
+.fp-chip:has(input:focus-visible), .tile-choice:has(input:focus-visible) { outline: 3px solid var(--Highlight); outline-offset: 3px; }
+.fp-chip input, .tile-choice input { position: absolute; opacity: 0; pointer-events: none; }
+
+/* AppTextFieldStyle */
+.fp-field { display: block; width: 100%; min-height: var(--size-control); padding: 6px 16px; font-size: 14px; line-height: 19px; color: var(--TextPrimary); }
+.fp-field::placeholder { color: var(--TextSecondary); opacity: 1; }
+
+/* AppProgressBar */
+.fp-progress { display: block; position: relative; height: 6px; border-radius: var(--radius-capsule); background: var(--SurfaceBorder); overflow: hidden; }
+.fp-progress__fill { display: block; position: relative; height: 100%; width: 0; border-radius: var(--radius-capsule); background: var(--AccentColor); transition: width .45s cubic-bezier(.3, .7, .2, 1); overflow: hidden; }
+.fp-progress__fill::after { content: ""; position: absolute; inset: 0 auto 0 -40%; width: 40%; background: linear-gradient(90deg, transparent, #ffffffb3, transparent); opacity: 0; }
+.fp-progress.is-gaining .fp-progress__fill::after { animation: glint .7s ease-out .15s; }
+@keyframes glint { 0% { left: -40%; opacity: 1; } 100% { left: 110%; opacity: 1; } }
+
+/* CompanionPlate */
+.fp-plate { flex: none; display: grid; place-items: center; border-radius: 50%; background: var(--TintPeach); border: 2px solid var(--SurfacePrimary); overflow: hidden; }
+.fp-plate img { width: 70%; height: 70%; object-fit: contain; }
+
+/* Site header: a dock like AppTabBar */
+.site-header { position: sticky; top: 10px; z-index: 30; margin-top: 10px; pointer-events: none; }
+.site-header .shell { pointer-events: auto; }
+.dock { display: flex; align-items: center; justify-content: space-between; gap: var(--spacing-small); min-height: var(--header-h); padding: 6px 8px 6px 10px; border-radius: var(--radius-large); }
+.brand { display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding-right: 8px; border-radius: var(--radius-extraSmall); color: var(--TextPrimary); text-decoration: none; }
+.brand:hover { color: var(--TextPrimary); }
+.brand img { width: 30px; height: 30px; border-radius: 8px; background: #85a18a; }
+.brand span { font-family: var(--font-rounded); font-size: 18px; font-weight: 800; letter-spacing: -.02em; }
+.dock nav { display: flex; align-items: center; gap: 2px; }
+.dock nav a { display: inline-flex; align-items: center; min-height: 36px; padding: 0 12px; border-radius: var(--radius-capsule); color: var(--TextSecondary); font-size: 14px; font-weight: 600; text-decoration: none; transition: background-color .22s, color .22s; }
+.dock nav a:hover, .dock nav a[aria-current="page"] { background: var(--NavigationSelectionBackground); color: var(--TextPrimary); }
+
+/* Coming soon: not pressable, so outlined rather than raised. */
+.soon { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 5px 16px 5px 7px; border-radius: var(--radius-small); color: var(--TextPrimary); font-size: 13px; line-height: 17px; font-weight: 600; text-align: left; }
+.soon img { width: 28px; height: 28px; border-radius: 7px; background: #85a18a; }
+.soon small { display: block; font-size: 11px; line-height: 14px; font-weight: 400; color: var(--TextSecondary); }
+
+/* Phone frame around a screen capture */
+.phone { --w: 220px; flex: none; width: var(--w); border: calc(var(--w) * .027) solid var(--Bezel); border-radius: calc(var(--w) * .158); background: var(--Bezel); overflow: hidden; }
+.phone img { width: 100%; border-radius: calc(var(--w) * .132); }
+.phone--rise { border-bottom: 0; border-end-start-radius: 0; border-end-end-radius: 0; }
+.phone--rise img { border-end-start-radius: 0; border-end-end-radius: 0; }
+@media (prefers-color-scheme: dark) { .phone { box-shadow: 0 0 0 2px var(--SurfaceBorder); } }
+
+/* Site footer */
+.site-footer { border-top: var(--border-surface) solid var(--SurfaceBorder); padding-block: 16px 24px; color: var(--TextSecondary); font-size: 13px; }
+.site-footer .shell { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px; }
+.site-footer ul { display: flex; flex-wrap: wrap; gap: 4px 20px; }
+.site-footer a { display: inline-flex; align-items: center; min-height: 36px; }
+
+@media (max-width: 560px) {
+  .shell { width: min(100% - 32px, 960px); }
+  .dock nav .nav-optional { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
