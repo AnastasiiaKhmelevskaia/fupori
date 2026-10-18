@@ -21,16 +21,12 @@ or dependencies are required. To preview, open `index.html` in a browser.
 - `assets/companions/`: companion art as SVG, named `<species><Level><Mood>.svg`.
 - `assets/screens/`: phone screens cropped from the App Store screenshots.
 
-## When the app is live
+## App Store link
 
-`index.html` shows a "Coming soon to the App Store" label in the hero and in
-the closing section (search for `class="soon`). Replace both with a link to the
-App Store listing.
-
-Until then the "Join the beta" buttons on both pages point at the public
-TestFlight link (search for `testflight.apple.com`). Remove or repoint them
-when the beta closes. The social links are in the "Follow along" row at the
-end of `index.html`.
+The "Download" buttons on both pages point at the App Store listing
+(search for `apps.apple.com`). The social links are in the "Follow along" row
+at the end of `index.html`, and the roadmap is the `#roadmap` section; update
+its `is-done`, `is-next` and `is-later` classes as milestones ship.
 
 The former `fupori-privacy` repository redirects its public URLs to this site,
 so links already used in the app continue to work.

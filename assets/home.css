@@ -18,8 +18,8 @@ html:not(.js) .needs-js { display: none; }
 .hero h1 em { color: #b85c16; }
 .hero__copy > p { max-width: 380px; margin: 10px auto 0; color: #4a4038; font-size: clamp(.975rem, .93rem + .2vw, 1.0625rem); line-height: 1.5; text-wrap: balance; }
 .actions { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: center; gap: 10px 12px; margin-top: 18px; }
-.hero .soon { background: #fff8f0; border-color: #d8d3cf; color: var(--Ink); }
-.hero .soon small { color: #6d675f; }
+.hero .app-meta { background: #fff8f0; border-color: #d8d3cf; color: var(--Ink); }
+.hero .app-meta small { color: #6d675f; }
 .hero__stage { --phone-w: clamp(184px, 17vw, 216px); position: relative; display: flex; justify-content: center; height: calc(var(--phone-w) * 1.36); margin-top: clamp(22px, 3vw, 34px); }
 .hero__stage .phone { --w: var(--phone-w); align-self: flex-start; }
 .pet { position: absolute; bottom: 14px; width: clamp(80px, 9.5vw, 116px); }
@@ -109,6 +109,59 @@ html:not(.js) .needs-js { display: none; }
 .badges li { display: grid; justify-items: center; align-content: start; gap: 4px; font-size: 11px; line-height: 14px; font-weight: 600; text-align: center; color: var(--TextSecondary); }
 .badges img { width: min(100%, 56px); aspect-ratio: 1; object-fit: contain; }
 
+/* Roadmap: nodes on a line, done in green, next in accent, later still dashed.
+   When it scrolls in, the nodes pop in turn and the line fills up to "next". */
+.roadmap { --node: 36px; --gap: 16px; --line: 4px; --line-hidden: scaleX(0); display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gap); margin-top: clamp(24px, 3.5vw, 36px); }
+.milestone { position: relative; display: grid; grid-template-rows: auto 1fr; justify-items: center; gap: 14px; }
+.milestone__node { position: relative; z-index: 1; display: grid; place-items: center; width: var(--node); height: var(--node); border-radius: 50%; border: var(--border-surface) solid var(--SurfaceBorder); background: var(--SurfacePrimary); transition: scale .42s cubic-bezier(.3, 1.5, .5, 1), opacity .3s ease-out; }
+.milestone__node .fp-glyph { width: 16px; height: 16px; stroke-width: 3; stroke-dasharray: 20; stroke-dashoffset: 0; transition: stroke-dashoffset .4s ease-out; }
+.milestone__dot { width: 10px; height: 10px; border-radius: 50%; background: var(--SurfaceBorder); }
+.is-done .milestone__node { background: var(--BrandSecondary); border-color: var(--BrandSecondaryBorder); color: #fff; }
+.is-next .milestone__node { background: var(--AccentColor); border-color: var(--AccentBorder); }
+.is-next .milestone__dot { background: var(--Ink); }
+.is-next .milestone__node::after { content: ""; position: absolute; inset: -2px; border-radius: 50%; border: 2px solid var(--AccentColor); animation: ripple 2s ease-out infinite; }
+@keyframes ripple { 0% { scale: 1; opacity: .9; } 100% { scale: 1.9; opacity: 0; } }
+
+/* The line to the next node: grey underneath, a fill on top that grows in. */
+.milestone:not(:last-child)::before, .milestone:not(:last-child)::after { content: ""; position: absolute; top: calc((var(--node) - var(--line)) / 2); left: calc(50% + var(--node) / 2 + 6px); width: calc(100% + var(--gap) - var(--node) - 12px); height: var(--line); border-radius: var(--radius-capsule); }
+.milestone:not(:last-child)::before { background: var(--SurfaceBorder); }
+.milestone:not(:last-child)::after { transform-origin: 0 0; transition: transform .5s cubic-bezier(.3, .7, .2, 1); }
+.is-done:not(:last-child)::after { background: var(--BrandSecondary); }
+.is-done:has(+ .is-next)::after { background: linear-gradient(90deg, var(--BrandSecondary), var(--AccentColor)); }
+.is-next:not(:last-child)::before, .is-later:not(:last-child)::before { background: repeating-linear-gradient(90deg, var(--SurfaceBorder) 0 8px, transparent 8px 14px); }
+
+.milestone__card { display: flex; flex-direction: column; align-items: flex-start; width: 100%; padding: var(--spacing-medium); border-radius: var(--radius-large); font-size: 13px; line-height: 19px; color: var(--TextSecondary); }
+.is-next .milestone__card { border-color: var(--AccentBorder); background: color-mix(in srgb, var(--AccentColor) 10%, var(--SurfacePrimary)); }
+.is-later .milestone__card { border-style: dashed; background: transparent; }
+.milestone__art { display: grid; place-items: end start; width: 52px; height: 52px; margin-bottom: 12px; }
+.milestone__art img, .milestone__art svg { width: 100%; height: 100%; object-fit: contain; }
+.milestone__art img[src*="app-icon"] { width: 46px; height: 46px; border-radius: 22%; background: #85a18a; }
+.milestone__art--wobble svg { transform-origin: 50% 90%; animation: wobble 3s ease-in-out infinite; }
+.milestone__art--twinkle .spark { transform-box: fill-box; transform-origin: center; animation: twinkle 1.8s ease-in-out infinite; }
+.milestone__art--twinkle .spark + .spark { animation-delay: -.9s; }
+@keyframes wobble { 0%, 100% { rotate: -5deg; } 50% { rotate: 5deg; } }
+@keyframes twinkle { 0%, 100% { scale: 1; opacity: 1; } 50% { scale: .4; opacity: .4; } }
+
+.milestone__status { display: inline-flex; align-items: center; min-height: 22px; padding: 0 9px; border-radius: var(--radius-capsule); border: var(--border-surface) solid var(--SurfaceBorder); font-size: 11px; line-height: 14px; font-weight: 700; letter-spacing: .02em; text-transform: uppercase; color: var(--TextSecondary); }
+.is-done .milestone__status { border-color: color-mix(in srgb, var(--BrandSecondaryBorder) 60%, var(--SurfaceBorder)); background: color-mix(in srgb, var(--BrandSecondary) 14%, var(--SurfacePrimary)); color: var(--Link); }
+.is-next .milestone__status { border-color: var(--AccentBorder); background: var(--AccentColor); color: var(--Ink); }
+.milestone h3 { margin: 8px 0 4px; color: var(--TextPrimary); }
+.milestone__extra { width: 100%; margin-top: auto; padding-top: 10px; }
+.milestone__extra::before { content: ""; display: block; margin-bottom: 10px; border-top: 1px dashed var(--AccentBorder); }
+.milestone__extra b { display: block; color: var(--HighlightText); font-family: var(--font-rounded); font-size: 14px; }
+
+/* Entrance, only once the page script is there to start it. */
+.js .roadmap:not(.is-in) .milestone__node { scale: .5; opacity: 0; }
+.js .roadmap:not(.is-in) .milestone__node .fp-glyph { stroke-dashoffset: 20; }
+.js .roadmap:not(.is-in) .milestone::after { transform: var(--line-hidden); }
+.roadmap .milestone:nth-child(2) .milestone__node { transition-delay: .35s; }
+.roadmap .milestone:nth-child(3) .milestone__node { transition-delay: .75s; }
+.roadmap .milestone:nth-child(4) .milestone__node { transition-delay: 1.05s; }
+.roadmap .milestone:nth-child(1) .fp-glyph { transition-delay: .25s; }
+.roadmap .milestone:nth-child(2) .fp-glyph { transition-delay: .6s; }
+.roadmap .milestone:nth-child(1)::after { transition-delay: .15s; }
+.roadmap .milestone:nth-child(2)::after { transition-delay: .5s; }
+
 /* Closing */
 .facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--spacing-large); }
 .fact { display: grid; grid-template-columns: 28px 1fr; column-gap: 10px; align-items: start; }
@@ -129,6 +182,15 @@ html:not(.js) .needs-js { display: none; }
   .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .closing { grid-template-columns: auto minmax(0, 1fr); }
   .closing__actions { grid-column: 2; }
+}
+
+/* Narrow screens: the roadmap runs down the page, nodes on the left. */
+@media (max-width: 760px) {
+  .roadmap { --line-hidden: scaleY(0); grid-template-columns: 1fr; }
+  .milestone { grid-template-columns: var(--node) minmax(0, 1fr); grid-template-rows: auto; align-items: start; gap: 14px; }
+  .milestone:not(:last-child)::before, .milestone:not(:last-child)::after { top: calc(var(--node) + 6px); left: calc((var(--node) - var(--line)) / 2); width: var(--line); height: calc(100% + var(--gap) - var(--node) - 12px); }
+  .is-done:has(+ .is-next)::after { background: linear-gradient(180deg, var(--BrandSecondary), var(--AccentColor)); }
+  .is-next:not(:last-child)::before, .is-later:not(:last-child)::before { background: repeating-linear-gradient(180deg, var(--SurfaceBorder) 0 8px, transparent 8px 14px); }
 }
 
 @media (max-width: 720px) {

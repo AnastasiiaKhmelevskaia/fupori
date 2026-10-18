@@ -196,10 +196,10 @@ a.fp-raised:active, button.fp-raised:active, label.fp-raised:active { opacity: v
 .dock nav a { display: inline-flex; align-items: center; min-height: 36px; padding: 0 12px; border-radius: var(--radius-capsule); color: var(--TextSecondary); font-size: 14px; font-weight: 600; text-decoration: none; transition: background-color .22s, color .22s; }
 .dock nav a:hover, .dock nav a[aria-current="page"] { background: var(--NavigationSelectionBackground); color: var(--TextPrimary); }
 
-/* Coming soon: not pressable, so outlined rather than raised. */
-.soon { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 5px 16px 5px 7px; border-radius: var(--radius-small); color: var(--TextPrimary); font-size: 13px; line-height: 17px; font-weight: 600; text-align: left; }
-.soon img { width: 28px; height: 28px; border-radius: 7px; background: #85a18a; }
-.soon small { display: block; font-size: 11px; line-height: 14px; font-weight: 400; color: var(--TextSecondary); }
+/* App name and requirements beside the download button: not pressable, so outlined rather than raised. */
+.app-meta { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 5px 16px 5px 7px; border-radius: var(--radius-small); color: var(--TextPrimary); font-size: 13px; line-height: 17px; font-weight: 600; text-align: left; }
+.app-meta img { width: 28px; height: 28px; border-radius: 7px; background: #85a18a; }
+.app-meta small { display: block; font-size: 11px; line-height: 14px; font-weight: 400; color: var(--TextSecondary); }
 
 /* Phone frame around a screen capture */
 .phone { --w: 220px; flex: none; width: var(--w); border: calc(var(--w) * .027) solid var(--Bezel); border-radius: calc(var(--w) * .158); background: var(--Bezel); overflow: hidden; }
