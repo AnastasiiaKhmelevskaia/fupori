@@ -62,7 +62,7 @@
   --TintMeadow: color-mix(in srgb, #a9c56b 24%, var(--AppBackground));
   --TintSun: color-mix(in srgb, var(--BrandPrimary) 20%, var(--AppBackground));
   --TintPeach: color-mix(in srgb, var(--AccentColor) 10%, var(--AppBackground));
-  --header-h: 52px;
+  --header-h: 54px;
 
   font-family: var(--font-sans);
   font-synthesis: none;
